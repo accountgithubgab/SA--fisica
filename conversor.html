@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="./fontawesome/css/all.css">
+      <link rel="stylesheet" type="text/css" href="./css/css-button/hover.css">
+      <link rel="stylesheet" type="text/css" href="./css/css-button/demo-page.css">
+      <link rel="stylesheet" type="text/css" href="./css/conversor.css">
+      <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-grid.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="icon" type="imagem/png" href="./img/favicon/fav-fis.png" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <script src="./js/conversor.js"></script>
+      <script src="./js/angular/angular.js"></script>
+      <script src="./js/jQuery.js"></script>
+      <title>Física-Conversor</title>
+</head>
+
+<body>
+      <!-- Preloader -->
+      <div id="preloader">
+            <div class="inner">
+                  <div class="bolas">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                  </div>
+            </div>
+      </div>
+      <!-- Card -->
+      <div class="card mx-auto" id="card" style="max-width: 59%;">
+            <div id="headerCard" class="card-header text-dark"><b>CONVERSOR DE TEMPERATURAS</b></div>
+            <div class="card-body text-dark" id="cardbody">
+                  <!--Inputs que recebem valor-->
+                  <div class="row mt-2">
+                        <div class="col-5 mx-auto">
+                              <div class="form-group" id="inputs">
+                                    <div class="col-md">
+                                          <small>Celcius:</small>
+                                          <input type="text" id="cel" name="cel" autocomplete="0"
+                                                placeholder="Temp em Celsius" class="form-control col-md-7 mb-5"
+                                                onkeypress='return SomenteNumero(event)'>
+                                          <small>Fahrenheit:</small>
+                                          <input type="text" id="fah" name="fah" autocomplete="0"
+                                                placeholder="Temp em Fahrenheit" class="form-control col-md-7 mb-5"
+                                                onkeypress='return SomenteNumero(event)'>
+                                          <small>Kelvin:</small>
+                                          <input type="text" id="kel" name="kel" autocomplete="0"
+                                                placeholder="Temp em Kelvin" class="form-control col-md-7"
+                                                onkeypress='return SomenteNumeroKel(event)'>
+                                    </div>
+                              </div>
+                        </div>
+                        <!--Icone flechas-->
+                        <div class="col-3 mx-auto">
+                              <i id="arrow" class="fas fa-exchange-alt ml-2"></i>
+                        </div>
+                        <!--Inputs que apresentam o resultado da conta-->
+                        <div class="col-4 mx-auto">
+                              <small>Celcius:</small>
+                              <input id="rCel" autocomplete="0" placeholder="Celsius" class="form-control col-md-7 mb-5"
+                                    disabled>
+                              <small>Fahrenheit:</small>
+                              <input id="rFah" autocomplete="0" placeholder="Fahrenheit"
+                                    class="form-control col-md-7 mb-5" disabled>
+                              <small>Kelvin:</small>
+                              <input id="rKel" autocomplete="0" placeholder="Kelvin" class="form-control col-md-7"
+                                    disabled>
+                        </div>
+                  </div>
+                  <!--Botões-->
+                  <div class="row">
+                        <div class="col-3">
+                        </div>
+                        <div class="col-5 text-center ">
+                              <button id="convert" onclick="conversoes()"
+                                    class="btn btn-success mt-4 hvr-grow">Converter<i
+                                          class="fas fa-exchange-alt ml-2 "></i></button>
+                              &nbsp;<button id="limpa" onclick="limpar()" class="btn btn-danger mt-4 hvr-grow">Limpar<i
+                                          class="fas fa-broom ml-2"></i></button>
+                        </div>
+                        <div class="col-4">
+                        </div>
+                  </div>
+                  <!-- Alert -->
+                  <div class="alert alert-danger text-center mt-4 erro" id="alert" role="alert">Nao existem
+                        valores negativos na escala Kelvin</div>
+                  <div class="alert alert-danger text-center mt-4 validacao" id="alert" role="alert">Por
+                        favor
+                        insera
+                        uma
+                        temperatura</div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+                              <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"><b>FÓRMULAS</b></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                    </button>
+                              </div>
+                              <div class="modal-body text-center">
+                                    <img class="img-fluid mt-2 mb-2" alt="Responsive image"
+                                          src="https://i.pinimg.com/originals/3a/d7/a8/3ad7a86cc44ebc786eeebff3d15fcd34.png">
+                              </div>
+                              <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary hvr-grow"
+                                          data-dismiss="modal">Voltar</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <div class="card-footer">
+                  <button aria-label="formulas" type="button" class="btn btn-info hvr-grow" data-toggle="modal"
+                        data-target="#exampleModal"><i class="fas fa-book"></i></button>
+                  <a href="index.html" class="btn btn-secondary float-right hvr-grow"><i
+                              class="fas fa-sign-out-alt"></i></a>
+            </div>
+      </div>
+      </div>
+      </div>
+      <div class="bg"></div>
+      <div class="bg bg2"></div>
+      <div class="bg bg3"></div>
+      <div class="container">
+      </div>
+</body>
+
+</html>

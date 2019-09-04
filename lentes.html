@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="./fontawesome/css/all.css">
+      <link rel="stylesheet" type="text/css" href="./css/lentes.css">
+      <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-grid.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="icon" type="imagem/png" href="./img/favicon/fav-fis.png" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <script src="./js/lentes.js"></script>
+      <script src="./js/angular/angular.js"></script>
+      <title>Física-Lentes</title>
+</head>
+<body>
+      <!--Card-->
+      <div class="card mx-auto" id="card" style="max-width: 59%;">
+            <div id="headerCard" class="card-header text-dark"><b>CALCULO DE LENTES</b></div>
+            <div class="card-body text-dark" id="cardbody">
+                  <div class="form-group">
+                        <div class="container">
+                              <div class="row">
+                                    <div class="col-sm">
+                                          <div class="form-row mr-5">
+                                                &nbsp; Nos campos indicados abaixo, insira os valores dados no exame
+                                                oftalmológico. O seu grau no olho direito e esquero, além da indicação
+                                                da deformidade (miopia | astigmatismo | hipermetropia).
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <img class="img-fluid" alt="Responsive image" id="oculos" src="img/oculso.png">
+                  <!--Inputs-->
+                  <div class="container">
+                        <div class="row col-md-12">
+                              <div class="col-md">
+                                    <div class="form-row float-right">
+                                          <input placeholder="Olho esquerdo" id="direito" class="form-control text-center col-sm-6" onkeypress='return SomenteNumero(event)'>
+                                    </div>
+                              </div>
+                              <div class="col-md">
+                                    <div class="form-row float-left">
+                                          <input id="esquerdo" placeholder="Olho direito" class="form-control text-center col-sm-6" onkeypress='return SomenteNumero(event)'>
+                                    </div>
+                              </div>
+                        </div>
+                        <hr class="mt-4">
+                  </div>
+                  <!--Respostas-->
+                  <div class="container">
+                        <div class="row">
+                              <div class="col">
+                                    <p class="float-right mr-5">Angulação :</p>
+                                    <!--AQUI VAI O ANGULO CALCULADO EM CADA OLHO-->
+                                    <input id="angulo" class="form-control border-0 bg-transparent" disabled>
+                                    <!--AQUI VAI O TIPO DE LENTE //// CONCAVA DE BORDA X E SEI LA OQ-->
+                                    <input id="tipoLente" class="form-control border-0 bg-transparent" disabled>
+                              </div>
+                              <div class="col">
+                                    <p class="float-left ml-4">Diâmetro :</p>
+                                    <!--AQUI VAI O DIAMETRO / GROSSURA DA LENTE-->
+                                    <input id="diametro" class="form-control border-0 bg-transparent" disabled>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                              <div class="modal-content">
+                                    <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel"><b>FÓRMULAS</b></h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                          </button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                          <img class="img-fluid mt-2 mb-2" alt="Responsive image" src="https://i.pinimg.com/originals/3a/d7/a8/3ad7a86cc44ebc786eeebff3d15fcd34.png">
+                                    </div>
+                                    <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <!--Botões-->
+            <div class="card-footer">
+                  <div class="container">
+                        <div class="row">
+                              <div class="col-sm">
+                                    <button aria-label="formulas" type="button" class="btn btn-info" data-toggle="modal"
+                                          data-target="#exampleModal"><i class="fas fa-book"></i></button>
+                              </div>
+                              <div class="col-sm text-center">
+                                    <button onclick="calcularLente()" class="btn btn-success">Calcular&nbsp;<i class="fas fa-calculator"></i></button>
+                              </div>
+                              <div class="col-sm">
+                                          <button id="limpa" onclick="limpar()" class="btn btn-danger ml-3">Limpar&nbsp;<i class="fas fa-broom"></i></button>
+                              </div>
+                              <div class="col-sm">
+                                          <a href="index.html" class="btn btn-secondary float-right"><i class="fas fa-sign-out-alt"></i></a>
+                                    </div>
+                        </div>
+                  </div>
+
+
+            </div>
+      </div>
+</body>
+
+</html>

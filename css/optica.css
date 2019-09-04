@@ -1,0 +1,17 @@
+#card{
+    font-family: serif;
+    margin-top: 5em;   
+}
+#cardbody{
+    height: 30em;
+}
+#cel, #kel, #fah{
+    border-color: black;
+}   
+body{
+    background-image: url('https://images4.alphacoders.com/115/115638.jpg');
+}
+#arrow {
+    margin-top: 2.6em;
+    font-size: 50px;
+}

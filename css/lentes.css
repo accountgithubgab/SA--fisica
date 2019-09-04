@@ -1,0 +1,27 @@
+#card{
+    font-family: serif;
+    margin-top: 5em;   
+}
+#cardbody{
+    height: 30em;
+}
+#cel, #kel, #fah{
+    border-color: black;
+}   
+body{
+    background-image: url('https://images4.alphacoders.com/115/115638.jpg');
+}
+#oculos {
+    padding: 0%;
+    position: relative;
+    margin: 0%;
+    margin-left: 12.5em;
+    height: 10em;
+    width: 30em;
+}
+#esquerdo{
+    margin-left: 3em; 
+}
+#direito{
+    margin-left: 4.5em;
+}
